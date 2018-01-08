@@ -1,0 +1,35 @@
+{
+  "name": "agario-config",
+  "version": "0.0.0",
+  "description": "Grabs agar config from miniclip config",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/henopied/agario-config.git"
+  },
+  "keywords": [
+    "agar.io",
+    "config",
+    "skins",
+    "scraper",
+    "agar",
+    "agario"
+  ],
+  "author": "henopied",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/henopied/agario-config/issues"
+  },
+  "homepage": "https://github.com/henopied/agario-config#readme",
+  "dependencies": {
+    "json5": "^0.5.1",
+    "request": "^2.83.0",
+    "request-promise-native": "^1.0.5"
+  },
+  "devDependencies": {
+    "fs-then-native": "^2.0.0"
+  }
+}
