@@ -25,11 +25,11 @@
   },
   "homepage": "https://github.com/henopied/agario-config#readme",
   "dependencies": {
-    "json5": "^0.5.1",
-    "request": "^2.83.0",
-    "request-promise-native": "^1.0.5"
+    "axios": "^0.17.1",
+    "json5": "^0.5.1"
   },
   "devDependencies": {
-    "fs-then-native": "^2.0.0"
+    "fs-then-native": "^2.0.0",
+    "items-promise": "^1.0.0"
   }
 }

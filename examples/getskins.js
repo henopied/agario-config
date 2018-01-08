@@ -1,7 +1,8 @@
-const request = require('request-promise-native');
-const MiniclipConfig = require('..');
+const axios = require('axios');
+const { serial, parallel } = require('items-promise');
 const path = require('path');
 const fs = require('fs-then-native');
+const MiniclipConfig = require('..');
 
 (async () => {
   const skinDir = path.resolve(__dirname, 'skins');
@@ -12,14 +13,14 @@ const fs = require('fs-then-native');
   const freeSkins = miniclipConfig.config['Gameplay - Free Skins'];
   const premiumSkins = miniclipConfig.config['Gameplay - Equippable Skins'];
 
-  freeSkins.forEach(downloadSkin);
-  premiumSkins.forEach(downloadSkin);
+  serial(freeSkins.concat(premiumSkins), downloadSkin);
 
   async function downloadSkin({ image }) {
-    url = image.replace(/\.png/, '_hi.png');
+    const url = image.replace(/\.png/, '_hi.png');
+    console.log(`Currently downloading: ${url}`);
     let download = null;
     try {
-      download = await request({ url: `${miniclipConfig.baseURL}/${url}`, encoding: null});
+      download = (await axios({ method: 'get', url: `${miniclipConfig.baseURL}/${url}`, responseType: 'arraybuffer' })).data;
     } catch(e) {
       console.log(`Error downloading ${url}: ${e}`);
       return;

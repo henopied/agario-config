@@ -1,4 +1,4 @@
-const request = require('request-promise-native');
+const { get } = require('axios');
 const JSON = require('json5')
 
 module.exports = class MiniclipConfig {
@@ -17,17 +17,16 @@ module.exports = class MiniclipConfig {
   }
   
   async getEnv() {
-    const envJS = await request(`${this.protocol}://agar.io/environment.js`);
+    const envJS = (await get(`${this.protocol}://agar.io/environment.js`)).data;
     this.env = JSON.parse(envJS.slice(17));
   }
 
   async getID() {
-    this.id = await request(`${this.protocol}://${this.env.master_url}/getLatestID`);
+    this.id = (await get(`${this.protocol}://${this.env.master_url}/getLatestID`)).data;
     this.baseURL = `${this.env.config_url}/${this.id}`;
   }
 
   async getConfig() {
-    const config = await request(`${this.baseURL}/GameConfiguration.json`);
-    this.config = JSON.parse(config).gameConfig;
+    this.config = (await get(`${this.baseURL}/GameConfiguration.json`)).data.gameConfig;
   }
 };
