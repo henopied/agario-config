@@ -1,2 +1,2 @@
 # agario-config
-Grabs agar config from miniclip
+Grabs agar config from miniclip.
