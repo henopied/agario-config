@@ -26,7 +26,7 @@
   "homepage": "https://github.com/henopied/agario-config#readme",
   "dependencies": {
     "axios": "^0.17.1",
-    "json5": "^0.5.1"
+    "json5": "^1.0.2"
   },
   "devDependencies": {
     "fs-then-native": "^2.0.0",
